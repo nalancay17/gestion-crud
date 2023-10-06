@@ -73,4 +73,7 @@
     <!-- Habilitar configuración de transacciones basadas en anotaciones -->
 	<tx:annotation-driven transaction-manager="miTransactionManager" />
 
+	<!-- indicamos a Spring donde estan nuestros recursos externos -->
+	<mvc:resources location="/recursos/" mapping="/recursos/**"></mvc:resources>
+
 </beans>
