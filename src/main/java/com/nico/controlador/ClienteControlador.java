@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.nico.dao.ClienteDAO;
 import com.nico.entidad.Cliente;
@@ -38,5 +39,18 @@ public class ClienteControlador {
 		clienteDAO.insertarCliente(cliente);
 		return "redirect:/cliente/lista";
 	}
-	
+
+	@GetMapping("/formularioActualizacion")
+	public String formularioActualizacion(Model modelo, @RequestParam("id") int id) {
+		Cliente c = clienteDAO.getCliente(id);
+		modelo.addAttribute("cliente", c);
+		return "formulario-actualizacion";
+	}
+
+	@PostMapping("/actualizarCliente")
+	public String procesarFormularioActualizacion(@ModelAttribute("cliente") Cliente cliente) {
+		clienteDAO.actualizarCliente(cliente);
+		return "redirect:/cliente/lista";
+	}
+
 }

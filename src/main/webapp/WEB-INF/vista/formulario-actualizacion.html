@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Actualización de cliente</title>
+<link rel="stylesheet" type="text/css" href="/gestion-crud/recursos/css/estilos.css">
+</head>
+<body>
+
+	<form th:action="@{/cliente/actualizarCliente}" th:object="${cliente}" method="POST">
+
+		<input type="hidden" th:field="*{id}" th:value="*{id}">
+	
+		<table>
+			<tr>
+				<td>Nombre: </td>
+				<td><input type="text" th:field="*{nombre}" th:value="${cliente.nombre}">
+					<p th:if="${#fields.hasErrors('nombre')}" th:errorclass="error"
+					th:errors="*{nombre}" /></td>
+			</tr>
+
+			<tr>
+				<td>Apellido: </td>
+				<td><input type="text" th:field="*{apellido}" th:value="${cliente.apellido}">
+					<p th:if="${#fields.hasErrors('apellido')}" th:errorclass="error"
+					th:errors="*{apellido}" /></td>
+			</tr>
+
+			<tr>
+				<td>Email: </td>
+				<td><input type="text" th:field="*{email}" th:value="${cliente.email}">
+					<p th:if="${#fields.hasErrors('email')}" th:errorclass="error"
+					th:errors="*{email}" /></td>
+			</tr>
+
+			<tr>
+				<td colspan="2"><input type="submit" value="Modificar"></td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+</html>
