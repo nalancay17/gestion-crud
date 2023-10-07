@@ -25,4 +25,11 @@ public class ClienteDAOImpl implements ClienteDAO {
 		return query.getResultList();
 	}
 
+	@Override
+	@Transactional
+	public void insertarCliente(Cliente cliente) {
+		Session session = factory.openSession();
+		session.save(cliente);
+	}
+
 }
