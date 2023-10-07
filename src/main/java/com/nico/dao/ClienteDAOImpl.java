@@ -32,4 +32,19 @@ public class ClienteDAOImpl implements ClienteDAO {
 		session.save(cliente);
 	}
 
+	@Override
+	@Transactional
+	public Cliente getCliente(int id) {
+		Session session = factory.openSession();
+		Cliente c = session.get(Cliente.class, id);
+		return c;
+	}
+
+	@Override
+	@Transactional
+	public void actualizarCliente(Cliente cliente) {
+		Session session = factory.getCurrentSession();
+		session.update(cliente);
+	}
+
 }
