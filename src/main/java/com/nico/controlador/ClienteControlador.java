@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nico.dao.ClienteDAO;
@@ -24,4 +26,17 @@ public class ClienteControlador {
 		modelo.addAttribute("clientes", clientes);
 		return "lista-clientes";
 	}
+
+	@GetMapping("/formularioRegistro")
+	public String formularioRegistro(Model modelo) {
+		modelo.addAttribute("cliente", new Cliente());
+		return "formulario-registro";
+	}
+
+	@PostMapping("/insertarCliente")
+	public String procesarFormularioRegistro(@ModelAttribute("cliente") Cliente cliente) {
+		clienteDAO.insertarCliente(cliente);
+		return "redirect:/cliente/lista";
+	}
+	
 }
