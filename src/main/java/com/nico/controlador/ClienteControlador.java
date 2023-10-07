@@ -53,4 +53,10 @@ public class ClienteControlador {
 		return "redirect:/cliente/lista";
 	}
 
+	@GetMapping("/eliminarCliente")
+	public String eliminarCliente(@RequestParam("id") int id) {
+		clienteDAO.eliminarCliente(id);
+		return "redirect:/cliente/lista";
+	}
+
 }

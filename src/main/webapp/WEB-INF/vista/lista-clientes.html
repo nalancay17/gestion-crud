@@ -16,7 +16,8 @@
 				<th>Nombre</th>
 				<th>Apellido</th>
 				<th>Email</th>
-				<th>Accion</th>
+				<th>Accion 1</th>
+				<th>Accion 2</th>
 			<tr />
 		</thead>
 		<tbody>
@@ -26,6 +27,8 @@
 				<td th:text="${cliente.apellido}" />
 				<td th:text="${cliente.email}" />
 				<td><a th:href="@{/cliente/formularioActualizacion(id=${cliente.id})}">Actualizar</a></td>
+				<td><a th:href="@{/cliente/eliminarCliente(id=${cliente.id})}"
+					onclick="if(!confirm('¿Desea eliminar el registro seleccionado?')) return false">Eliminar</a></td>
 			</tr>
 		</tbody>
 	</table>
