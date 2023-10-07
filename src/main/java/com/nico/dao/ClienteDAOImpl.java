@@ -20,7 +20,7 @@ public class ClienteDAOImpl implements ClienteDAO {
 	@Override
 	@Transactional
 	public List<Cliente> getClientes() {
-		Session session = factory.openSession();
+		Session session = factory.getCurrentSession();
 		Query<Cliente> query = session.createQuery("FROM Cliente", Cliente.class);
 		return query.getResultList();
 	}
@@ -28,7 +28,7 @@ public class ClienteDAOImpl implements ClienteDAO {
 	@Override
 	@Transactional
 	public void insertarCliente(Cliente cliente) {
-		Session session = factory.openSession();
+		Session session = factory.getCurrentSession();
 		session.save(cliente);
 	}
 
