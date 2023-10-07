@@ -11,3 +11,7 @@ table {
 	text-align: center;
 	margin: auto;
 }
+
+.error {
+	color: red;
+}
