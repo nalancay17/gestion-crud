@@ -35,7 +35,7 @@ public class ClienteDAOImpl implements ClienteDAO {
 	@Override
 	@Transactional
 	public Cliente getCliente(int id) {
-		Session session = factory.openSession();
+		Session session = factory.getCurrentSession();
 		Cliente c = session.get(Cliente.class, id);
 		return c;
 	}
@@ -45,6 +45,15 @@ public class ClienteDAOImpl implements ClienteDAO {
 	public void actualizarCliente(Cliente cliente) {
 		Session session = factory.getCurrentSession();
 		session.update(cliente);
+	}
+
+	@Override
+	@Transactional
+	public void eliminarCliente(int id) {
+		Session session = factory.getCurrentSession();
+		Query query = session.createQuery("DELETE FROM Cliente WHERE id=:idCliente");
+		query.setParameter("idCliente", id);
+		query.executeUpdate();
 	}
 
 }
