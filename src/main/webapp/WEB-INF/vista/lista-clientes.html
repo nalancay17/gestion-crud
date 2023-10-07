@@ -16,6 +16,7 @@
 				<th>Nombre</th>
 				<th>Apellido</th>
 				<th>Email</th>
+				<th>Accion</th>
 			<tr />
 		</thead>
 		<tbody>
@@ -24,6 +25,7 @@
 				<td th:text="${cliente.nombre}" />
 				<td th:text="${cliente.apellido}" />
 				<td th:text="${cliente.email}" />
+				<td><a th:href="@{/cliente/formularioActualizacion(id=${cliente.id})}">Actualizar</a></td>
 			</tr>
 		</tbody>
 	</table>
