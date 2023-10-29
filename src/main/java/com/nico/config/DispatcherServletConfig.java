@@ -2,6 +2,8 @@ package com.nico.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import com.mysql.cj.protocol.Security;
+
 public class DispatcherServletConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
@@ -11,7 +13,7 @@ public class DispatcherServletConfig extends AbstractAnnotationConfigDispatcherS
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() { // Config DispatcherServlet
-		return new Class[] { WebConfig.class };
+		return new Class[] { WebConfig.class, Security.class };
 	}
 
 	@Override
