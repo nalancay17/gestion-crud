@@ -36,5 +36,10 @@
 	<br><br>
 	<button onclick="window.location.href='formularioRegistro'">Agregar cliente</button>
 
+	<form action="/gestion-crud/logout" method="POST">
+		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+		<input type="submit" value="Logout"/>
+	</form>
+
 </body>
 </html>
