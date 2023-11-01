@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Formulario Login</title>
+
+    <link rel="stylesheet" type="text/css" href="/gestion-crud/recursos/css/login.css">
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"
+          id="bootstrap-css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<div class="container login-container">
+
+    <div class="login-form-1">
+        <h3>Has login para acceder</h3>
+        <div th:if="${param.error}" th:class="error-message">
+            Usuario y contraseña inválidos.
+        </div>
+        <div th:if="${param.logout}" th:class="successful-logout-message">
+            Has hecho log out con éxito.
+        </div>
+        <form th:action="@{/login}" method="post">
+            <div class="form-group">
+                <input type="text" class="form-control" name="username" placeholder="Nombre de usuario *"/>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" name="password" placeholder="Contraseña *"/>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btnSubmit" value="Login"/>
+            </div>
+            <div class="form-group">
+                <a href="#" class="ForgetPwd">Forget Password?</a>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>
