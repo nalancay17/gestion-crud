@@ -13,4 +13,9 @@ public class AutenticacionControlador {
         return "login";
     }
 
+	@GetMapping("/acceso-denegado")
+	public String accesoDenegado() {
+		return "acceso-denegado";
+	}
+
 }

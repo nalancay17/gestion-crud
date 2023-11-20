@@ -21,6 +21,7 @@ public class SecurityConfig {
         return http
                 .authorizeHttpRequests(authorize -> authorize
                 		.requestMatchers("/recursos/**").permitAll()
+                		.requestMatchers("/administrador/**").hasAuthority("ADMIN")
                 		.anyRequest().authenticated()
                 )
                 .formLogin(form -> form
@@ -35,6 +36,9 @@ public class SecurityConfig {
                         .clearAuthentication(true)
                         .deleteCookies("remember-me", "JSESSIONID")
                         .permitAll()
+                )
+                .exceptionHandling(ex -> ex
+                		.accessDeniedPage("/acceso-denegado")
                 )
                 .build();
     }
